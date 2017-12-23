@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Country List
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+      <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+      <button ion-button type="button" (click)="sort()">Sort</button>
+      <ion-item *ngFor="let c of countries | search : terms | sort: {property: column, order: order}">
+      <ion-avatar item-left>
+        <img src="{{c.flag}}">
+      </ion-avatar>
+      <h2>{{c.name}}</h2>
+      <p>Capital: {{c.capital}}, Region: {{c.region}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
